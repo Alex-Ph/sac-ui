@@ -9,7 +9,7 @@ export class TaskService {
   private taskUrl: string;
  
   constructor(private http: HttpClient) {
-    this.taskUrl = 'http://localhost:8080/opentasks';
+    this.taskUrl = 'http://localhost:8080/openSacTasks';
   }
 
   public findAll(): Observable<Task[]> {
