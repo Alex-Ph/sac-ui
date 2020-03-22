@@ -3,25 +3,16 @@
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Date</th>
+            <th scope="col">Completed</th>
             <th scope="col">Task</th>
-            <th scope="col">Description</th>
             <th scope="col">Assignee</th>
-            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let task of tasks">
             <td>{{ task.date }}</td>
             <td>{{ task.name }}</td>
-            <td>{{ task.description }}</td>
             <td>{{ task.assignee }}</td>
-            <td *ngIf="task.assignee !== null">
-              <a [routerLink]="['/taskcomplete',task.id]" class="btn btn-info">Complete</a>
-            </td>
-            <td *ngIf="task.assignee === null">
-              <a [routerLink]="['/taskclaim', task.id, 'currentDummyUser']" class="btn btn-info">Claim</a>
-            </td>
           </tr>
         </tbody>
       </table>

@@ -6,13 +6,18 @@ import { Observable } from 'rxjs/internal/Observable';
 @Injectable()
 export class TaskService {
 
-  private taskUrl: string;
- 
   constructor(private http: HttpClient) {
-    this.taskUrl = 'http://localhost:8080/openSacTasks';
   }
 
-  public findAll(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.taskUrl);
+  public findOpenTasks(): Observable<Task[]> {
+    let taskUrl = 'http://localhost:8080/openSacTasks';
+  
+    return this.http.get<Task[]>(taskUrl);
+  }
+
+  public findCompletedTasks(): Observable<Task[]> {
+    let taskUrl = 'http://localhost:8080/completedSacTasks';
+  
+    return this.http.get<Task[]>(taskUrl);
   }
 }

@@ -10,11 +10,10 @@ import { TaskService } from '../../service/task.service';
 export class OpentaskListComponent implements OnInit {
 
   tasks: Task[];
-
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskService.findAll().subscribe((data: Task[]) => {
+    this.taskService.findOpenTasks().subscribe((data: Task[]) => {
       this.tasks = data;
     });
   }
