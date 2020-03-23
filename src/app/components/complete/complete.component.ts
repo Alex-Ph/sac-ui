@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ManagetaskService } from 'src/app/service/managetask.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-complete',
@@ -9,13 +9,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CompleteComponent implements OnInit {
   taskId: string;
-  
-  constructor(private route: ActivatedRoute, private taskService: ManagetaskService) {
+  completedVisible: boolean;
+  errorVisible: boolean;
+  error: string;
+
+  constructor(private router: Router, private route: ActivatedRoute, private taskService: ManagetaskService) {
     this.taskId = this.route.snapshot.params.taskId;
   }
 
   ngOnInit(): void {
-    this.taskService.completeTask(this.taskId);
   }
 
+  completeTask(signature: string): void {
+    this.completedVisible = false;
+    this.errorVisible = false;
+    
+    this.taskService.completeTask(this.taskId, signature)
+    .subscribe(() => { 
+      this.completedVisible = true;
+    }, 
+    (msg) =>  {
+      this.errorVisible = true; 
+      this.error = msg.error.message
+    });
+    
+  }
 }

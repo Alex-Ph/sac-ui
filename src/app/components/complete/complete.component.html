@@ -1,1 +1,8 @@
-<p>Task with id {{taskId}} completed</p>
+<div>
+    <label>Signature:</label>
+    <input #signature type="text" placeholder="Please provide your signature to complete task" ng-disabled="completedVisible">
+    
+    <button class="button" (click)="completeTask(signature.value)">Complete Task!</button>
+    <p *ngIf="completedVisible">Task ID= {{taskId}} and signature {{signature.value}} completed</p>
+    <p *ngIf="errorVisible">An error occured = {{error}}</p>
+</div>

@@ -10,12 +10,15 @@ export class ManagetaskService {
   constructor(private http: HttpClient) {
   }
 
-  public completeTask(id: string){
+  // return observable to be able to check if it worked or not
+  public completeTask(id: string, signature: string): Observable<string>{
     let url = `http://localhost:8080/completeTask/`
     let task = {
-      id
+      id,
+      signature
     }
-    return this.http.post<string>(url, task).subscribe();
+
+    return this.http.post<string>(url, task);
   }
 
   public claimTask(id: string, assignee: string){
