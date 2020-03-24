@@ -10,5 +10,6 @@ ToDos:
 - Refactor URL literals
 - Dont route complete / claim (just do it and reload default page) -> or use subrouting
 - Format date
+- Add state mgmt so a a toaster can toast messages :)
 - Create tests
 - Add auth

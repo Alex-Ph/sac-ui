@@ -1,8 +1,19 @@
 <div>
-    <label>Signature:</label>
-    <input #signature type="text" placeholder="Please provide your signature to complete task" ng-disabled="completedVisible">
-    
-    <button class="button" (click)="completeTask(signature.value)">Complete Task!</button>
-    <p *ngIf="completedVisible">Task ID= {{taskId}} and signature {{signature.value}} completed</p>
-    <p *ngIf="errorVisible">An error occured = {{error}}</p>
+    <div class="input-group mb-3">
+        <input #signature type="text" class="form-control" 
+            placeholder="Please provide your signature to complete task" 
+            aria-label="Provide signature">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="completeTask(signature.value)">Complete Task!</button>
+        </div>
+    </div>
+
+    <div *ngIf="errorVisible" class="alert alert-danger" role="alert">
+        An error occured = {{error}}
+    </div>
+
+    <div *ngIf="completedVisible" class="alert alert-success" role="alert">
+        Task ID= {{taskId}} and signature {{signature.value}} completed
+    </div>
+
 </div>

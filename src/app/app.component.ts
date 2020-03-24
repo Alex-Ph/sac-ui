@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sacclient';
+  title = 'Angular + Camunda prototyping';
+
+  constructor(){}
+
+  showStandard(){
+    window.alert("test");
+  }
 }
