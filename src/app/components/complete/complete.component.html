@@ -1,19 +1,22 @@
-<div>
-    <div class="input-group mb-3">
-        <input #signature type="text" class="form-control" 
-            placeholder="Please provide your signature to complete task" 
-            aria-label="Provide signature">
-        <div class="input-group-append">
-          <button type="button" class="btn btn-primary" (click)="completeTask(signature.value)">Complete Task!</button>
+<div class="card my-5">
+    <div class="card-body">
+        <h5 class="card-title">Complete task</h5>
+
+        <div class="input-group mb-3">
+            <input #signature type="text" class="form-control" 
+                placeholder="Please provide your signature to complete task" 
+                aria-label="Provide signature">
+            <div class="input-group-append">
+            <button type="button" class="btn btn-primary" (click)="completeTask(signature.value)">Complete Task!</button>
+            </div>
+        </div>
+
+        <div *ngIf="errorVisible" class="alert alert-danger" role="alert">
+            An error occured = {{error}}
+        </div>
+
+        <div *ngIf="completedVisible" class="alert alert-success" role="alert">
+            Task ID= {{taskId}} and signature {{signature.value}} completed
         </div>
     </div>
-
-    <div *ngIf="errorVisible" class="alert alert-danger" role="alert">
-        An error occured = {{error}}
-    </div>
-
-    <div *ngIf="completedVisible" class="alert alert-success" role="alert">
-        Task ID= {{taskId}} and signature {{signature.value}} completed
-    </div>
-
 </div>
