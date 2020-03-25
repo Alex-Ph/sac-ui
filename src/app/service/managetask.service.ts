@@ -21,12 +21,12 @@ export class ManagetaskService {
     return this.http.post<string>(url, task);
   }
 
-  public claimTask(id: string, assignee: string){
+  public claimTask(id: string, assignee: string):Observable<string>{
     let url = `http://localhost:8080/claimTask/`
     let task = {
       id,
       assignee
     }
-    return this.http.post<string>(url, task).subscribe();
+    return this.http.post<string>(url, task);
   }
 }
