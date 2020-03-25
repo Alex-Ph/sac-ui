@@ -14,6 +14,13 @@ import { ClaimComponent } from './components/claim/claim.component';
 import { ManagetaskService } from './service/managetask.service';
 import { CompletedTaskComponent } from './components/completedtask-list/completedtask-list.component';
 
+import { StoreModule } from '@ngrx/store';
+import { toastReducer } from './reducers/Toast.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
+import {NgxNotificationMsgModule, NgxNotificationMsgService} from 'ngx-notification-msg'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +33,16 @@ import { CompletedTaskComponent } from './components/completedtask-list/complete
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({
+      toast: toastReducer
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+
+    // external components
+    NgxNotificationMsgModule,
   ],
-  providers: [TaskService, ProcessDefinitionService, ManagetaskService],
+  providers: [TaskService, ProcessDefinitionService, ManagetaskService, NgxNotificationMsgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

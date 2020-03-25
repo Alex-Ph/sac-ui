@@ -21,7 +21,7 @@
               <a [routerLink]="['/taskcomplete',task.id]" class="btn btn-info">Complete</a>
             </td>
             <td *ngIf="task.assignee === null">
-              <a [routerLink]="['/taskclaim', task.id, 'currentDummyUser']" class="btn btn-info">Claim</a>
+              <button type="button" class="btn btn-primary" (click)="claimTask(task.id)">Claim</button>
             </td>
           </tr>
         </tbody>
