@@ -1,30 +1,38 @@
 <div class="card my-5">
-    <div class="card-body">
-      <h5 class="card-title">List of open tasks</h5>
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Task</th>
-            <th scope="col">Description</th>
-            <th scope="col">Assignee</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let task of tasks">
-            <td>{{ task.date }}</td>
-            <td>{{ task.name }}</td>
-            <td>{{ task.description }}</td>
-            <td>{{ task.assignee }}</td>
-            <td *ngIf="task.assignee !== null">
-              <a [routerLink]="['/taskcomplete',task.id]" class="btn btn-info">Complete</a>
-            </td>
-            <td *ngIf="task.assignee === null">
-              <button type="button" class="btn btn-primary" (click)="claimTask(task.id)">Claim</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="card-body">
+    <h5 class="card-title">List of open tasks</h5>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Task</th>
+          <th scope="col">Description</th>
+          <th scope="col">Assignee</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks$ | async">
+          <td>{{ task.date }}</td>
+          <td>{{ task.name }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.assignee }}</td>
+          <td *ngIf="task.assignee !== null">
+            <a [routerLink]="['/taskcomplete', task.id]" class="btn btn-info"
+              >Complete</a
+            >
+          </td>
+          <td *ngIf="task.assignee === null">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="claimTask(task.id)"
+            >
+              Claim
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>

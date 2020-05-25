@@ -14,10 +14,17 @@ To see "something", you have to start a process and switch to the open task view
 - Popup this toast with NgRx
   
 ## ToDos:
+- Deep Dive (basics, naming conventions and so, creating own components, ...)
+- Reactive check
+- Storybook for offlinetests
 - Landing page,
 - Get current position when navigating in navbar
 - Format the date
 - Check tests (if I have to deal with shadowdom or not ...) * e2e?
-- Deep Dive (basics, naming conventions and so, creating own components, ...)
 - Refactorings like URL literals
 - Add auth (later)
+- Reactive from server (define how its possible)
+  
+## Later...
+- Define: Browser range, i18n, aria support
+- Define to switch to scss, if project is getting more complex
