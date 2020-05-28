@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import {
   NgxNotificationMsgService,
@@ -16,8 +16,9 @@ import { toast, State } from "./reducers/Toast.reducer";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "Angular + Camunda prototyping";
+  evtSource;
 
   constructor(
     private readonly ngxNotificationMsgService: NgxNotificationMsgService,
@@ -34,6 +35,14 @@ export class AppComponent {
         });
       }
     });
+  }
+  ngOnInit(): void {
+    console.log("Add eventSource");
+    this.evtSource = new EventSource("http://localhost:8080/stream");
+    this.evtSource.onmessage = (message) => {
+      let event = JSON.parse(message.data);
+      console.log(`Server sent event: ${event.eventName}`);
+    };
   }
 
   startProcess() {
